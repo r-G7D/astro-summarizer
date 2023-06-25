@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getRecentPost, getRecentPostLocal } from "../service/PostService";
+import { Recent } from "../components/Recent";
+const post = await getRecentPostLocal();
+---
+
+<Layout title="Astro Summarizer">
+  <main>
+    <section>
+      <div class="hero"></div>
+      <div class="data">
+        <h1>Astro Summarizer</h1>
+        <h2>
+          an extremely simple summarizer platform using Hugging Face
+          Transformers and Astro with Solid JS.
+        </h2>
+        <a class="btn" href="/summary">Summarize Now!</a>
+      </div>
+    </section>
+    {!!post && <Recent summary={post?.summary} client:load />}
+    <!-- {
+      !!post && (
+        <div class="content">
+          <div class="post">
+            <h3>Recently Summarized</h3>
+            <p>{post?.summary}</p>
+          </div>
+        </div>
+      )
+    } -->
+  </main>
+</Layout>
+
+<style>
+  section {
+    width: 1000px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .hero {
+    background: url("/hero.jpeg") center center;
+    background-size: cover;
+    flex: 1;
+    height: 450px;
+    border-radius: 40px;
+  }
+
+  .data {
+    flex: 1;
+  }
+
+  h1 {
+    font-size: 72px;
+    font-family: "IBM Plex";
+    margin: 0 0 20px;
+  }
+
+  h2 {
+    font-family: "Poppins";
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0 0 40px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 150px;
+  }
+</style>
