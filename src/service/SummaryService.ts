@@ -1,4 +1,4 @@
-const ServicePath = "http://0.0.0.0:8000"
+const ServicePath = "http://192.168.1.11:8000"
 
 interface SummaryResponse {
   summary_text: string
