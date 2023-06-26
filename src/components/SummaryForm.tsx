@@ -1,7 +1,7 @@
 import { Show, createSignal } from "solid-js";
 import "./General.scss";
 import { getSummary } from "../service/SummaryService";
-import { savePost, savePostLocal } from "../service/PostService";
+import { saveLocal } from "../service/SaveService";
 
 export function SummaryForm() {
   const [text, setText] = createSignal("");
@@ -10,7 +10,7 @@ export function SummaryForm() {
   const [isAnalyzed, setAnalyzed] = createSignal();
 
   async function save() {
-    await savePostLocal(text(), summary());
+    await saveLocal(text(), summary());
     setLoading(false);
     window.location.href = "/astro-summarizer/";
   }
@@ -42,7 +42,7 @@ export function SummaryForm() {
 
       <textarea maxLength={"1000"} value={text()} onChange={ev => setText(ev.target.value)} />
 
-      <Show when={summary().length > 0}>
+      <Show when={isAnalyzed()}>
         <section class="tldr">
           <h3>Summary</h3>
           <p>{summary()}</p>

@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getRecentPost, getRecentPostLocal } from "../service/PostService";
-import { Recent } from "../components/Recent";
-const post = await getRecentPostLocal();
+import { getRecentLocal } from "../service/SaveService";
+import { Notice } from "../components/Notice";
+const post = await getRecentLocal();
 ---
 
 <Layout title="Astro Summarizer">
@@ -18,17 +18,7 @@ const post = await getRecentPostLocal();
         <a class="btn" href="/astro-summarizer/summary">Summarize Now!</a>
       </div>
     </section>
-    {!!post && <Recent header="Recently Summarized" summary={post?.summary} client:load />}
-    <!-- {
-      !!post && (
-        <div class="content">
-          <div class="post">
-            <h3>Recently Summarized</h3>
-            <p>{post?.summary}</p>
-          </div>
-        </div>
-      )
-    } -->
+    {!!post && <Notice header="Recently Summarized" summary={post?.summary} client:load />}
   </main>
 </Layout>
 
