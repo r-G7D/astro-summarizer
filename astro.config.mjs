@@ -7,5 +7,4 @@ export default defineConfig({
   site: "https://r-G7D.github.io",
   base: "/astro-summarizer",
   integrations: [solidJs()],
-  output: "server"
 });
