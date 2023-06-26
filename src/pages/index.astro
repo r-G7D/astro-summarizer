@@ -18,7 +18,7 @@ const saved = await getRecentLocal();
         <a class="btn" href="/astro-summarizer/summary">Summarize Now!</a>
       </div>
     </section>
-    {!saved?.summary || <Notice header="Recently Summarized" summary={saved.summary} client:load />}
+    {!!saved?.summary && <Notice header="Recently Summarized" summary={saved.summary} client:load />}
   </main>
 </Layout>
 
