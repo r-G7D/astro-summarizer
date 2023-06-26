@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getRecentLocal } from "../service/SaveService";
 import { Notice } from "../components/Notice";
-const post = await getRecentLocal();
+const saved = await getRecentLocal();
 ---
 
 <Layout title="Astro Summarizer">
@@ -12,13 +12,13 @@ const post = await getRecentLocal();
       <div class="data">
         <h1>Astro Summarizer</h1>
         <h2>
-          an extremely simple summarizer platform using Hugging Face
+          a simple summarizer platform using Hugging Face
           Transformers and Astro with Solid JS.
         </h2>
         <a class="btn" href="/astro-summarizer/summary">Summarize Now!</a>
       </div>
     </section>
-    {!!post && <Notice header="Recently Summarized" summary={post?.summary} client:load />}
+    {!saved || <Notice header="Recently Summarized" summary={saved?.summary} client:load />}
   </main>
 </Layout>
 

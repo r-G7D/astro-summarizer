@@ -31,7 +31,7 @@ export function SummaryForm() {
     setAnalyzed(false);
   }
 
-  async function post() {
+  async function summarize() {
     isAnalyzed() ? setLoading(false) : setLoading(true);
     isAnalyzed() ? await save() : analyze();
   }
@@ -51,7 +51,7 @@ export function SummaryForm() {
 
 
       <section class="row">
-        <button class="btn" onClick={(post)}>
+        <button class="btn" onClick={(summarize)}>
           {loading() ? "Summarizing..." : isAnalyzed() ? "Save" : "Summarize"}
         </button>
         <Show when={isAnalyzed()}>
