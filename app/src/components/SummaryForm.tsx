@@ -12,7 +12,7 @@ export function SummaryForm() {
   async function save() {
     await savePostLocal(text(), summary());
     setLoading(false);
-    window.location.href = "/";
+    window.location.href = "/astro-summarizer/";
   }
 
   function analyze() {

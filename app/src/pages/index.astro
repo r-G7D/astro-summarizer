@@ -15,10 +15,10 @@ const post = await getRecentPostLocal();
           an extremely simple summarizer platform using Hugging Face
           Transformers and Astro with Solid JS.
         </h2>
-        <a class="btn" href="/summary">Summarize Now!</a>
+        <a class="btn" href="/astro-summarizer/summary">Summarize Now!</a>
       </div>
     </section>
-    {!!post && <Recent summary={post?.summary} client:load />}
+    {!!post && <Recent header="Recently Summarized" summary={post?.summary} client:load />}
     <!-- {
       !!post && (
         <div class="content">
@@ -43,7 +43,7 @@ const post = await getRecentPostLocal();
   }
 
   .hero {
-    background: url("/hero.jpeg") center center;
+    background: url("/astro-summarizer/hero.jpeg") center center;
     background-size: cover;
     flex: 1;
     height: 450px;
