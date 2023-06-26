@@ -4,7 +4,6 @@ interface SummaryResponse {
 
 export async function getSummary(text: string): Promise<string> {
   const token = import.meta.env.PUBLIC_API_TOKEN;
-  console.log(token);
     const response = await fetch(
         "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
         {
