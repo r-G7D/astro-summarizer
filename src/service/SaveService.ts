@@ -11,9 +11,9 @@ export function saveLocal(text: string, summary: string): void {
 export async function getRecentLocal(): Promise<Save | null> {
   const text = await localStorage.getItem("text");
   const summary = await localStorage.getItem("summary");
-  if (!text || !summary) return null;
+  if (!text && !summary) return null;
   return {
-    text: text || "",
-    summary: summary || "",
+    text: text ?? "",
+    summary: summary ?? "",
   };
 }
